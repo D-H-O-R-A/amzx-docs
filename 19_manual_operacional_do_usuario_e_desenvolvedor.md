@@ -1,6 +1,6 @@
 # 📖 Manual Operacional e de Desenvolvimento AMZX (Guia Definitivo)
 
-Este manual técnico exaustivo foi elaborado para engenheiros de blockchain, operadores de nós, validadores e desenvolvedores do ecossistema **AMZX (Amazonic One)**. Ele descreve passo a passo todos os fluxos operacionais necessários para interagir, implantar e customizar o ecossistema utilizando os pacotes e códigos compilados do Nó e do Matcher DEX.
+Este manual técnico exaustivo foi elaborado para engenheiros de blockchain, operadores de nós, validadores e desenvolvedores do ecossistema **AMZX (better2better.com.br)**. Ele descreve passo a passo todos os fluxos operacionais necessários para interagir, implantar e customizar o ecossistema utilizando os pacotes e códigos compilados do Nó e do Matcher DEX.
 
 ---
 

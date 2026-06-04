@@ -1,6 +1,6 @@
 # 🛡️ Criptografia e Segurança da Blockchain AMZX (Rigor Técnico)
 
-Este documento detalha exaustivamente a arquitetura criptográfica do nó da blockchain **AMZX (Amazonic One)**. Ele descreve as primitivas criptográficas adotadas, como cada algoritmo é utilizado no protocolo, sua finalidade, as bibliotecas subjacentes que realizam as operações e uma análise crítica de obsolescência, segurança e possíveis melhorias futuras.
+Este documento detalha exaustivamente a arquitetura criptográfica do nó da blockchain **AMZX (better2better.com.br)**. Ele descreve as primitivas criptográficas adotadas, como cada algoritmo é utilizado no protocolo, sua finalidade, as bibliotecas subjacentes que realizam as operações e uma análise crítica de obsolescência, segurança e possíveis melhorias futuras.
 
 ---
 

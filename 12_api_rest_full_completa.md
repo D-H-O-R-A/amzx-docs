@@ -2,7 +2,7 @@
 
 Este documento fornece a especificação técnica exaustiva e de nível de produção de todos os endpoints REST HTTP expostos pelo **AMZX Node** (porta padrão `6869`) e pelo **AMZX Matcher DEX** (porta padrão `6886`). 
 
-Todos os exemplos de requisição e resposta foram adaptados para refletir a marca **AMZX** (Amazonic One), com valores em decimais nativos (Satoshis / $10^{-8}$ decimals) e formatos de payload de produção.
+Todos os exemplos de requisição e resposta foram adaptados para refletir a marca **AMZX** (better2better.com.br), com valores em decimais nativos (Satoshis / $10^{-8}$ decimals) e formatos de payload de produção.
 
 ---
 

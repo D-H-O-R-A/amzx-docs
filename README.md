@@ -1,4 +1,4 @@
-# 📚 Portal de Documentação Técnica - Ecossistema AMZX (Amazonic One)
+# 📚 Portal de Documentação Técnica - Ecossistema AMZX (better2better.com.br)
 
 Bem-vindo à central de documentação e engenharia definitiva do ecossistema **AMZX** (Node Blockchain Scala & Matcher DEX). 
 

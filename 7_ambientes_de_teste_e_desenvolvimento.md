@@ -1,6 +1,6 @@
 # 🧪 Ambientes de Teste, Simulação e Desenvolvimento AMZX
 
-Este documento fornece as instruções de engenharia para criar, configurar e operar ambientes de desenvolvimento rápidos, redes privadas locais (Private Testnets), execuções de testes automatizados e simulação offline de smart contracts RIDE no ecossistema **AMZX** (Amazonic One).
+Este documento fornece as instruções de engenharia para criar, configurar e operar ambientes de desenvolvimento rápidos, redes privadas locais (Private Testnets), execuções de testes automatizados e simulação offline de smart contracts RIDE no ecossistema **AMZX** (better2better.com.br).
 
 ---
 

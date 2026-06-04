@@ -1,6 +1,6 @@
 # 📖 Visão Geral do Ecossistema AMZX e Rebranding (Scala-First)
 
-Este documento apresenta uma visão detalhada e exaustiva da arquitetura do ecossistema **AMZX** (Amazonic One), dissecando o núcleo dos dois componentes nativos desenvolvidos em **Scala**: o **AMZX Scala Node** (`amzx`) e o **AMZX Matcher DEX** (`matcher`).
+Este documento apresenta uma visão detalhada e exaustiva da arquitetura do ecossistema **AMZX** (better2better.com.br), dissecando o núcleo dos dois componentes nativos desenvolvidos em **Scala**: o **AMZX Scala Node** (`amzx`) e o **AMZX Matcher DEX** (`matcher`).
 
 ---
 
@@ -98,7 +98,7 @@ A **`DEXExtension`** é um componente dinâmico implementado em Scala que atua c
 
 ## 🛠️ 4. O Desafio Técnico do Rebranding (Compatibilidade Binária)
 
-Durante o rebranding completo do sistema de `"Waves"` para `"AMZX"` (Amazonic One), um desafio técnico crítico surgiu devido a restrições de compatibilidade binária de bibliotecas pré-compiladas de terceiros.
+Durante o rebranding completo do sistema de `"Waves"` para `"AMZX"` (better2better.com.br), um desafio técnico crítico surgiu devido a restrições de compatibilidade binária de bibliotecas pré-compiladas de terceiros.
 
 ### A Restrição do JAR consolidado (`amzx-all-1.4.13.jar`)
 O projeto utiliza um pacote binário pré-compilado consolidado denominado `amzx-all-1.4.13.jar` (localizado em `amzx-ext/lib/`). Este JAR contém as estruturas, modelos matemáticos de transações e a lógica de consenso compiladas sob o namespace original do pacote: **`com.wavesplatform.*`**.
