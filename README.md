@@ -78,7 +78,17 @@ Abaixo está o índice estruturado dos documentos disponíveis, cobrindo cada ca
 ### 20. [📖 Manual Operacional e de Desenvolvimento AMZX (Guia Definitivo)](file:///home/diegooris/Documentos/amzblockchain/docs/19_manual_operacional_do_usuario_e_desenvolvedor.md)
 *   **Conteúdo**: Manual de referência consolidado passo a passo para inicialização de nós de rede, mineração de validadores, geração de redes customizadas, configuração do Matcher DEX, derivação algorítmica de endereços determinísticos via Nonce, fluxos de arrendamento de staking (Leasing e cancelamento), e regras de recompensas de rede.
 
+### 21. [📋 Requisitos e Guia de Inicialização do Cliente](file:///home/diegooris/Documentos/amzblockchain/docs/20_requisitos_e_guia_de_inicializacao_cliente.md)
+*   **Conteúdo**: Requisitos e procedimentos detalhados para instalação, inicialização e conexão do cliente leve às redes privadas e públicas AMZX.
+
+### 22. [🌐 Arquitetura de Subdomínios Nginx e SSL](file:///home/diegooris/Documentos/amzblockchain/docs/21_arquitetura_de_subdominios_nginx_e_ssl.md)
+*   **Conteúdo**: Configuração avançada de proxy reverso Nginx, roteamento de subdomínios, e provisionamento automático de certificados SSL/TLS com Certbot para segurança de pontas de API REST e canais gRPC.
+
+### 23. [🐳 Deploy Consolidado em VPS com Docker de Alta Performance](file:///home/diegooris/Documentos/amzblockchain/docs/22_deploy_vps_docker_consolidado.md)
+*   **Conteúdo**: Guia definitivo de implantação em produção utilizando contêiner consolidado Docker, detalhando o ciclo de vida do bootstrap dinâmico de genesis, persistência via volumes unificados, mapeamento de variáveis de ambiente e a resolução de engenharia para o conflito de keep-alive gRPC (`too_many_pings`).
+
 ---
+
 
 ## ☕ 12. Ambiente de Runtime e Compilação Homologado (Requisito Crítico)
 
