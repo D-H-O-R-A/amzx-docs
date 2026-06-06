@@ -47,9 +47,28 @@ O motor de consenso FairPoS e a emissão acelerada de micro-blocos Waves-NG apoi
     chronyc sources
     ```
 
-### C. Proteção da Chave Privada da Carteira (Wallet dat)
-*   **Chave Quente em Servidor**: O nó validador precisa da chave privada de mineração ativa em memória JVM quente para poder assinar os blocos que minerar. Se o servidor for invadido, a chave privada em texto plano ou o arquivo `wallet.dat` pode ser roubado.
-*   **Estratégia Recomendada**: Adote o **LPoS (Leased Proof of Stake)**. Mantenha os seus fundos AMZX ricos e importantes guardados em uma **Cold Wallet** offline (assinada via hardware) e arrende (*lease*) todo o seu saldo para um endereço de nó quente gerador online que possui saldo real zero. Desta forma, se o seu servidor minerador ativo for invadido, o invasor obterá apenas uma chave quente sem moedas para roubar, e os fundos da rede permanecerão perfeitamente seguros na Cold Wallet original.
+### C. Proteção da Chave Privada da Carteira (Seed & Wallet.dat)
+
+A proteção da semente mnemônica (Seed) e do arquivo de carteira é a prioridade número um na segurança operacional da AMZX. Implementamos três camadas de proteção ativa para garantir que nenhum invasor ou outro usuário do sistema tenha acesso às chaves:
+
+1.  **Blindagem do Sistema de Arquivos (Hardening de Permissões)**:
+    O assistente interativo `init-network.sh` aplica automaticamente regras estritas de permissão POSIX no Linux assim que a pasta de execução e as configurações são geradas:
+    *   **Diretório de Execução (`run-amzx-D/`)**: Configurado com permissão `chmod 700` (leitura, escrita e execução restritas exclusivamente ao usuário proprietário do processo. Qualquer outro usuário do sistema operacional é sumariamente bloqueado de acessar a pasta ou listar seus arquivos).
+    *   **Arquivos de Configuração (`blockchain.conf` e `matcher.conf`)**: Configurados com `chmod 600` (apenas o proprietário pode ler ou escrever os arquivos que contêm senhas e hashes de semente).
+    *   **Scripts de Inicialização (`start-node.sh` e `start-matcher.sh`)**: Configurados com `chmod 700` (apenas o proprietário pode executar ou visualizar as chamadas de inicialização).
+
+2.  **Remoção Física da Seed após o Primeiro Boot (Melhor Prática de Produção)**:
+    Uma característica única do nó AMZX é que o campo `seed` no arquivo de configuração `blockchain.conf` só é estritamente necessário no **primeiro arranque** do nó. 
+    *   No primeiro boot, o nó lê a seed mnemônica, gera e criptografa a carteira salvando-a no banco de dados `node-data/wallet/wallet.dat` usando a chave fornecida em `wallet.password`.
+    *   **Ação Recomendada**: Após o nó ter inicializado com sucesso uma vez, edite o arquivo `blockchain.conf`, localize a seção `wallet { ... }` e **remova ou comente** a linha `seed = "..."`. O nó continuará carregando perfeitamente a carteira a partir do arquivo criptografado `wallet.dat` usando a senha da carteira, eliminando completamente qualquer vestígio de texto plano da seed no disco rígido do servidor.
+
+3.  **Criptografia em Memória, Swagger Custom API Key e Bloqueio de APIs**:
+    *   O nó mantém as chaves privadas na memória heap da JVM protegidas por abstrações de arrays de bytes curtos e nunca expõe a semente mnemônica ou chaves privadas sem autenticação baseada em chaves.
+    *   **Swagger REST API Key Dinâmica (X-Api-Key)**: O assistente interativo `init-network.sh` agora obriga o usuário a configurar uma senha de acesso personalizada, forte (mínimo de 10 caracteres) e exclusiva no momento da inicialização da rede. O script valida a entrada impedindo campos vazios ou o uso da senha padrão insegura `ridethewaves!`. Em seguida, compila dinamicamente um utilitário Java on-the-fly (`HashGenerator`) que utiliza as bibliotecas criptográficas nativas da própria JVM da Waves (`com.wavesplatform.crypto`) para gerar um hash seguro composto (**Keccak256(Blake2b256)**) codificado em Base58. Este hash substitui automaticamente o campo `api-key-hash` nas configurações do node (`blockchain.conf`) e do Matcher DEX (`matcher.conf`). Isso elimina completamente o uso de chaves padrão inseguras e impede que o node seja bloqueado na inicialização por utilizar a chave padrão proibida pela própria arquitetura da Waves (`ridethewaves!`). Os scripts rápidos de bootstrap (`bootstrap.sh`) também foram elevados para o mesmo patamar de segurança rígido, obrigando a definição de senhas personalizadas fortes.
+    *   O proxy reverso Nginx configurado pelo wizard atua como uma barreira adicional: endpoints administrativos sensíveis da REST API (como `/wallet/seed`, `/addresses/seed` ou `/admin/*`) são bloqueados diretamente com `403 Forbidden` nas rotas do Nginx para tráfego remoto, e internamente no localhost exigem a transmissão correta da sua chave de acesso personalizada via cabeçalho `X-Api-Key`.
+
+4.  **Estratégia Recomendada de Mineração (LPoS - Leased Proof of Stake)**:
+    Adote o **LPoS**. Mantenha os seus fundos AMZX ricos e importantes guardados em uma **Cold Wallet** offline (assinada via hardware ou mantida isolada) e arrende (*lease*) todo o seu saldo para o endereço do nó quente gerador online que possui saldo real zero. Desta forma, se o seu servidor minerador ativo for invadido fisicamente ou logicamente, o invasor obterá apenas uma chave quente de mineração com saldo real zero (sem moedas para roubar), mantendo os fundos da rede perfeitamente seguros na Cold Wallet original.
 
 ---
 
